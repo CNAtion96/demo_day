@@ -1,0 +1,79 @@
+//Main app
+.App {
+  overflow: hidden;
+  background-image: url('http://bargephotography.com/BLOG/wp-content/uploads/2017/02/Cincinnati-2017-Barge-Photography-Cincinnati-Skyline_09.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .App-header {
+    height: 20vh;
+    padding: 20px;
+    text-align: center;
+    h2 {
+      width: 200px;
+      display: inline-block;
+    }
+
+    .logo {
+      width: 135px;
+      height: 135px;
+      text-align: center;
+      margin: 0px 15px;
+      margin-bottom: 25px;
+      z-index: 9999999;
+      display: inline-block;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .AppBody {
+    height: 80vh;
+    .intro {
+      text-align: center;
+      margin-bottom: 50px;
+      margin-top: 0px;
+    }
+  }
+}
+
+//sign in component
+.signInForm {
+  padding: 25px;
+  input {
+    margin-bottom: 45px;
+    height: 45px;
+    border: 1px solid black;
+    font-size: 1.5em;
+    box-shadow: -5px 5px 5px rgba(31,31,31,.7);
+    &:focus {
+      outline: none;
+      box-shadow: -8px 8px 8px rgba(31,31,31,.7);
+    }
+  }
+  button {
+    text-align: center;
+    width: 100px;
+    box-shadow: -5px 5px 5px rgba(31,31,31,.7);
+  }
+}
+
+//guest component
+.guestContainer{
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  height: 45vh;
+  margin-top: 75px;
+  background-color: rgba(31,31,31,.7);
+  color: white;
+  box-shadow: -5px 5px 5px rgba(31,31,31,.7);
+  .guestHeader {
+    border-bottom: 1px solid white;
+  }
+  .guestList {
+    overflow-y: scroll;
+    height: 35vh;
+  }
+}
