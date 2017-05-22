@@ -10,13 +10,26 @@ class App extends Component {
      this.addGuest = this.addGuest.bind(this);
   } 
 
+  handleNameChange(e) {
+   this.setState({name: e.target.value});
+  }
+  handleEmailChange(e) {
+   this.setState({email: e.target.value});
+  }
+  handleCompanyChange(e) {
+   this.setState({company: e.target.value});
+  }
+
   //https://demo-day-signin.herokuapp.com/
   addGuest(e) {
     e.preventDefault();
     e.stopPropagation();
-    e.stopImmediatePropagation();
-    alert('test');
-    console.log(this.refs.name.value);
+    const formData = {
+      name: this.refs.name.value,
+      email: this.refs.email.value,
+      company: this.refs.company.value
+    };
+    console.log('-->', formData);
     axios.post('https://demo-day-signin.herokuapp.com/guests', {
       name: this.refs.name.value,
       email: this.refs.email.value,
@@ -24,6 +37,9 @@ class App extends Component {
     })
     .then(function (response) {
       console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
     })
     this.refs.name.value = '';
     this.refs.email.value = '';
@@ -45,9 +61,23 @@ class App extends Component {
             <h2 className="intro">
               Please sign in below
             </h2>
-            <Signin />
+            <div className="col-md-8 col-md-offset-2 signInForm">
+              <form className="col-md-12" onSubmit={this.addGuest}>
+                <input className="col-md-12" ref="name" type="text" placeholder="Name"/>
+                <input className="col-md-12" ref="email" type="text" placeholder="Email"/>
+                <input className="col-md-12" ref="company" type="text" placeholder="Company"/>
+                <button className="btn col-md-2 col-md-offset-4 button" type="Submit">Submit</button>
+              </form>
+            </div>
           </div>
-          <Guests />
+          <div className="col-md-2 guestContainer">
+            <div className="guestHeader col-md-12">
+              <h1>Guest List</h1>
+            </div>
+            <div className="guestList col-md-12">
+              
+            </div>
+          </div>
         </div>
       </div>
     );
