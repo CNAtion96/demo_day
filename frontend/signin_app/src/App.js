@@ -8,16 +8,18 @@ class App extends Component {
   constructor(props) {
      super(props);
      this.addGuest = this.addGuest.bind(this);
-  } 
+     this.addNewGuest = this.addNewGuest.bind(this);
+     this.state = {
+      guests: []
+    }
+  }
 
-  handleNameChange(e) {
-   this.setState({name: e.target.value});
-  }
-  handleEmailChange(e) {
-   this.setState({email: e.target.value});
-  }
-  handleCompanyChange(e) {
-   this.setState({company: e.target.value});
+  addNewGuest(guests){
+    this.state.guests = [];
+    guests.forEach(function(guest){
+      this.state.guests.push(guest.name);
+    })
+    console.log(this.state.guests);
   }
 
   //https://demo-day-signin.herokuapp.com/
@@ -36,7 +38,9 @@ class App extends Component {
       company: this.refs.company.value
     })
     .then(function (response) {
-      console.log(response);
+      var guests = response.data;
+      //addNewGuest(guests);
+      console.log(guests);
     })
     .catch(function(error){
       console.log(error);
@@ -61,23 +65,9 @@ class App extends Component {
             <h2 className="intro">
               Please sign in below
             </h2>
-            <div className="col-md-8 col-md-offset-2 signInForm">
-              <form className="col-md-12" onSubmit={this.addGuest}>
-                <input className="col-md-12" ref="name" type="text" placeholder="Name"/>
-                <input className="col-md-12" ref="email" type="text" placeholder="Email"/>
-                <input className="col-md-12" ref="company" type="text" placeholder="Company"/>
-                <button className="btn col-md-2 col-md-offset-4 button" type="Submit">Submit</button>
-              </form>
-            </div>
+           <Signin/>
           </div>
-          <div className="col-md-2 guestContainer">
-            <div className="guestHeader col-md-12">
-              <h1>Guest List</h1>
-            </div>
-            <div className="guestList col-md-12">
-              
-            </div>
-          </div>
+          <Guests/>
         </div>
       </div>
     );
