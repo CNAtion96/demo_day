@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demoDay">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid row background" ng-controller="mainController as vm">
+            <header class="col-md-12">
+                <h2>Welcome to</h2> 
+                    <div class="logo">
+                        <img src="http://cdn.shopify.com/s/files/1/0862/9580/t/14/assets/logo.png?7815179029571702990"/>
+                    </div>
+                <h2>Demo Day!</h2>
+            </header>
+
+            <div class="appBody">
+                <!--Form for guests to submit their name, email, and company-->
+                <div class="col-md-8 col-md-offset-2 signInForm">
+                    <form class="col-md-10 col-md-offset-1" ng-Submit="vm.addGuest()">
+                    <input class="col-md-10 col-md-offset-1" ng-model="vm.name" type="text" placeholder="Name"/>
+                    <input class="col-md-10 col-md-offset-1" ng-model="vm.email" type="text" placeholder="Email"/>
+                    <input class="col-md-10 col-md-offset-1" ng-model="vm.company" type="text" placeholder="Company"/>
+                    <button class="btn col-md-2 col-md-offset-5 button" type="Submit">Submit</button>
+                    </form>
+                </div>
+
+                <!--div to display guests-->
+                <div class="col-md-2 guestContainer">
+                    <div class="guestHeader col-md-12">
+                        <h1>Guest List</h1>
+                    </div>
+                    <div class="guestList col-md-12">
+                        <h3 ng-repeat="guest in vm.guests">{{guest.name}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/controllers/mainController.js"></script>
+    <script src="./js/services/API.js"></script>
+    </body>
+</html>
